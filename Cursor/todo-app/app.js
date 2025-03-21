@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('tasks', JSON.stringify(tasks));
     };
 
-    const addTaskToDOM = (task) => {
+    const addTaskToDOM = (task, index) => {
         const li = document.createElement('li');
-        li.textContent = task.text;
+        li.textContent = `${index + 1}. ${task.text}`;
         if (task.completed) {
             li.classList.add('completed');
         }
@@ -30,8 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const deleteButton = document.createElement('button');
         deleteButton.textContent = '削除';
         deleteButton.addEventListener('click', () => {
-            li.remove();
-            saveTasks(getTasksFromDOM());
+            if (confirm('本当に削除しますか？')) {
+                li.remove();
+                saveTasks(getTasksFromDOM());
+                renderTasks(); // タスクの番号を再割り振り
+            }
         });
 
         li.appendChild(completeButton);
@@ -43,22 +46,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const tasks = [];
         taskList.querySelectorAll('li').forEach(li => {
             tasks.push({
-                text: li.firstChild.textContent,
+                text: li.firstChild.textContent.replace(/^\d+\.\s/, ''), // 番号を除去
                 completed: li.classList.contains('completed')
             });
         });
         return tasks;
     };
 
+    const renderTasks = () => {
+        taskList.innerHTML = '';
+        const tasks = getTasksFromDOM();
+        tasks.forEach((task, index) => addTaskToDOM(task, index));
+    };
+
     addTaskButton.addEventListener('click', () => {
         const taskText = taskInput.value.trim();
         if (taskText) {
             const task = { text: taskText, completed: false };
-            addTaskToDOM(task);
+            addTaskToDOM(task, taskList.children.length);
             saveTasks(getTasksFromDOM());
             taskInput.value = '';
         }
     });
 
     loadTasks();
+    renderTasks(); // 初期ロード時に番号を割り振る
 });
