@@ -12,9 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('tasks', JSON.stringify(tasks));
     };
 
-    const addTaskToDOM = (task, index) => {
+    const addTaskToDOM = (task) => {
         const li = document.createElement('li'); // タスクリスト
-        li.textContent = `${index + 1}. ${task.text}`;
+        li.textContent = `${task.id}. ${task.text}`;
+        li.dataset.id = task.id; // 一意の識別子を持たせる
         if (task.completed) {
             li.classList.add('completed');
         }
@@ -31,8 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
         deleteButton.textContent = '削除';
         deleteButton.addEventListener('click', () => {
             if (confirm('本当に削除しますか？')) { // ポップアップウィンドウ
-                li.remove(); // 選択した行のみを削除
-                saveTasks(getTasksFromDOM());
+                const tasks = getTasksFromDOM();
+                const taskIndex = tasks.findIndex(t => t.id === task.id); // IDを使用して削除
+                tasks.splice(taskIndex, 1);
+                saveTasks(tasks);
                 renderTasks(); // タスクの番号を再割り振り
             }
         });
@@ -46,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const tasks = [];
         taskList.querySelectorAll('li').forEach(li => {
             tasks.push({
+                id: parseInt(li.dataset.id, 10), // IDを取得
                 text: li.firstChild.textContent.replace(/^\d+\.\s/, ''), // 番号を除去
                 completed: li.classList.contains('completed')
             });
@@ -55,16 +59,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const renderTasks = () => {
         taskList.innerHTML = '';
-        const tasks = getTasksFromDOM();
-        tasks.forEach((task, index) => addTaskToDOM(task, index));
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        tasks.forEach((task, index) => {
+            task.id = index + 1; // IDを1から始まる連番に再割り振り
+            addTaskToDOM(task);
+        });
+        saveTasks(tasks); // 再割り振り後のタスクを保存
     };
 
     addTaskButton.addEventListener('click', () => {
         const taskText = taskInput.value.trim();
         if (taskText) {
-            const task = { text: taskText, completed: false };
-            addTaskToDOM(task, taskList.children.length);
-            saveTasks(getTasksFromDOM());
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            const taskId = tasks.length + 1; // 新しいタスクのIDを設定
+            const task = { id: taskId, text: taskText, completed: false };
+            tasks.push(task);
+            addTaskToDOM(task);
+            saveTasks(tasks);
             taskInput.value = '';
         }
     });
