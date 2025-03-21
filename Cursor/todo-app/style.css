@@ -17,7 +17,7 @@ h1 {
     text-align: center;
 }
 
-input[type="text"] {
+input[type="text"] { /* 入力欄 */
     width: calc(100% - 22px);
     padding: 10px;
     margin-bottom: 10px;
@@ -25,7 +25,7 @@ input[type="text"] {
     border-radius: 4px;
 }
 
-button {
+button { /* 入力欄、タスクリスト */
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -34,16 +34,16 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+button:hover { /* 入力欄、タスクリスト */
     background-color: #0056b3;
 }
 
-ul {
+ul { /* タスクリスト */
     list-style-type: none;
     padding: 0;
 }
 
-li {
+li { /* タスクリスト */
     padding: 10px;
     border-bottom: 1px solid #ddd;
     display: flex;
@@ -51,7 +51,7 @@ li {
     align-items: center;
 }
 
-li.completed {
+li.completed { /* タスクリスト */
     text-decoration: line-through;
     color: #888;
 }

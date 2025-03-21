@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const taskInput = document.getElementById('taskInput');
-    const addTaskButton = document.getElementById('addTaskButton');
-    const taskList = document.getElementById('taskList');
+    const taskInput = document.getElementById('taskInput'); // 入力欄
+    const addTaskButton = document.getElementById('addTaskButton'); // 入力欄
+    const taskList = document.getElementById('taskList'); // タスクリスト
 
     const loadTasks = () => {
         const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -13,13 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const addTaskToDOM = (task, index) => {
-        const li = document.createElement('li');
+        const li = document.createElement('li'); // タスクリスト
         li.textContent = `${index + 1}. ${task.text}`;
         if (task.completed) {
             li.classList.add('completed');
         }
 
-        const completeButton = document.createElement('button');
+        const completeButton = document.createElement('button'); // タスクリスト
         completeButton.textContent = '完了';
         completeButton.addEventListener('click', () => {
             task.completed = !task.completed;
@@ -27,11 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
             saveTasks(getTasksFromDOM());
         });
 
-        const deleteButton = document.createElement('button');
+        const deleteButton = document.createElement('button'); // タスクリスト
         deleteButton.textContent = '削除';
         deleteButton.addEventListener('click', () => {
-            if (confirm('本当に削除しますか？')) {
-                li.remove();
+            if (confirm('本当に削除しますか？')) { // ポップアップウィンドウ
+                li.remove(); // 選択した行のみを削除
                 saveTasks(getTasksFromDOM());
                 renderTasks(); // タスクの番号を再割り振り
             }
