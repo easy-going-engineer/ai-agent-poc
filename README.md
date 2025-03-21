@@ -1,8 +1,7 @@
 # 概要
-AIエージェントを試しに使った際のコード保管用
+AIエージェントを試しに使ってできたものの保管用
 
-# ディレクトリ構成
+### [Cursor](https://easy-going-engineer.github.io/ai-agent-poc/Cursor/)
 
-ai-agent-poc
-|- cursor
-|- cline
+
+### [Cline](https://easy-going-engineer.github.io/ai-agent-poc/Cline/)
