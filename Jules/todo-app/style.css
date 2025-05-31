@@ -1,0 +1,10 @@
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Add any additional custom styles here */
+.task-item.completed {
+    text-decoration: line-through;
+    color: #6c757d; /* Bootstrap's secondary text color */
+}
