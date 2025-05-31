@@ -1,0 +1,92 @@
+body {
+  font-family: 'Segoe UI', 'Meiryo', sans-serif;
+  background: #f8f8f8;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 32px;
+}
+
+#input-area {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+#task-input {
+  width: 240px;
+  padding: 8px;
+  font-size: 16px;
+}
+
+#add-btn {
+  padding: 8px 16px;
+  margin-left: 8px;
+  font-size: 16px;
+  background: #0078d7;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#add-btn:hover {
+  background: #005fa3;
+}
+
+#task-list {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  margin-bottom: 8px;
+  padding: 12px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.task-item.completed {
+  text-decoration: line-through;
+  color: #aaa;
+  background: #e6e6e6;
+}
+
+.delete-btn {
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.delete-btn:hover {
+  background: #b71c1c;
+}
+
+/* 編集用input */
+.task-item input[type="text"] {
+  font-size: 16px;
+  padding: 6px;
+  margin-left: 8px;
+  flex: 1;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+
+/* 編集用ボタン */
+.task-item button {
+  margin-right: 8px;
+}
