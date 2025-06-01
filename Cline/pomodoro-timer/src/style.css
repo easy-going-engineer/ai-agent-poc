@@ -1,0 +1,59 @@
+/* タイマー表示の調整 */
+#timer-display {
+  font-family: 'Segoe UI', 'Meiryo', sans-serif;
+  letter-spacing: 2px;
+}
+
+/* カードの影を強調 */
+.card {
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+/* 背景画像時のオーバーレイ */
+#main-bg.bg-image {
+  position: relative;
+}
+#main-bg.bg-image::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 0;
+}
+
+/* テキストの可読性向上 */
+.bg-dark, .bg-dark .card, .bg-dark .card-header {
+  color: #fff !important;
+  background-color: #222 !important;
+}
+.bg-dark .form-control, .bg-dark .form-select {
+  background-color: #333 !important;
+  color: #fff !important;
+  border-color: #444;
+}
+.bg-dark .btn {
+  border-color: #444;
+}
+
+body[style*="background-color: #007bff"] .card,
+body[style*="background-color: #007bff"] .card-header {
+  background-color: rgba(0,0,0,0.3) !important;
+  color: #fff !important;
+}
+
+/* 履歴リストの余白調整 */
+#history-list {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 600px) {
+  .container {
+    padding: 0.5rem !important;
+  }
+  .card {
+    margin-bottom: 1rem;
+  }
+}
