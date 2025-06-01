@@ -1,0 +1,37 @@
+body {
+    min-height: 100vh;
+    transition: background-color 0.3s ease;
+}
+
+.timer-display h2 {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.controls button {
+    min-width: 100px;
+}
+
+#historyList {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+} 
