@@ -1,0 +1,121 @@
+/* General Body Styling */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    transition: background-color 0.5s ease, background-image 0.5s ease; /* Smooth transition for background changes */
+    min-height: 100vh; /* Ensure body takes at least full viewport height for background image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Container Styling */
+.container {
+    max-width: 768px; /* Max width for larger screens */
+    background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white background for readability over images */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* Timer Display */
+#timer-display {
+    font-size: 4.5rem; /* Large and prominent */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.btn {
+    margin: 5px; /* Add some margin for spacing */
+}
+
+/* Active Mode Button Styling - using Bootstrap variables for consistency */
+.btn-outline-primary.active, .btn-check:checked + .btn-outline-primary {
+    background-color: #0d6efd; /* Bootstrap primary blue */
+    color: white;
+}
+
+.btn-outline-success.active, .btn-check:checked + .btn-outline-success {
+    background-color: #198754; /* Bootstrap success green */
+    color: white;
+}
+
+.btn-outline-info.active, .btn-check:checked + .btn-outline-info {
+    background-color: #0dcaf0; /* Bootstrap info cyan */
+    color: white;
+}
+
+/* Settings and Appearance Sections */
+.row.justify-content-center h3 {
+    margin-bottom: 1.5rem;
+    color: #495057; /* Slightly muted heading color */
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+.form-control-color {
+    min-height: calc(1.5em + .75rem + 2px); /* Ensure color picker is not too small */
+    padding: .375rem .75rem; /* Match other form controls sizing */
+}
+
+/* History List */
+#history-list .list-group-item {
+    padding: 0.75rem 1.25rem;
+    border-color: rgba(0,0,0,0.08); /* Softer border color */
+}
+
+#history-list .list-group-item:nth-child(odd) {
+    /* background-color: #f8f9fa; */ /* Optional: alternating background for readability - can be a bit much with body background */
+}
+
+#history-list .badge {
+    font-size: 0.8em;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 576px) {
+    #timer-display {
+        font-size: 3.5rem; /* Slightly smaller timer display on small screens */
+    }
+
+    .container {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        padding: 15px;
+    }
+
+    h1.mb-4.text-center {
+        font-size: 1.75rem; /* Adjust main heading size */
+    }
+
+    .row.justify-content-center h3 {
+        font-size: 1.25rem; /* Adjust section heading size */
+    }
+
+    .btn-group, .text-center.mb-4 > .btn { /* Stack buttons in groups or individually for better touch targets */
+        display: block;
+        width: calc(100% - 10px); /* Make buttons wider, account for margin */
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+    }
+    .text-center.mb-4 > .btn:last-child {
+        margin-bottom: 0;
+    }
+     .text-center.mb-4 > .btn-group .btn {
+        width: 100%;
+     }
+}
+
+/* Ensure settings inputs are full width on small screens if not already by Bootstrap */
+@media (max-width: 767px) { /* md breakpoint */
+    .col-md-6 .form-control,
+    .col-md-6 .form-control-color {
+        width: 100%;
+    }
+}

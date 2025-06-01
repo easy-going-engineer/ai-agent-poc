@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Pomodoro Timer</h1>
+
+        <!-- Timer Display -->
+        <div class="text-center mb-4">
+            <h2 id="timer-display">25:00</h2>
+        </div>
+
+        <!-- Timer Controls -->
+        <div class="text-center mb-4">
+            <button id="start-btn" class="btn btn-primary mx-1">Start</button>
+            <button id="pause-btn" class="btn btn-secondary mx-1">Pause</button>
+            <button id="reset-btn" class="btn btn-danger mx-1">Reset</button>
+        </div>
+
+        <!-- Timer Type Selector -->
+        <div class="text-center mb-4">
+            <button id="pomodoro-mode-btn" class="btn btn-outline-primary mx-1 active" data-mode="pomodoro">Pomodoro</button>
+            <button id="short-break-mode-btn" class="btn btn-outline-success mx-1" data-mode="shortBreak">Short Break</button>
+            <button id="long-break-mode-btn" class="btn btn-outline-info mx-1" data-mode="longBreak">Long Break</button>
+        </div>
+
+        <!-- Settings -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6">
+                <h3 class="text-center mb-3">Settings</h3>
+                <div class="mb-3">
+                    <label for="pomodoro-duration" class="form-label">Pomodoro Duration (minutes)</label>
+                    <input type="number" id="pomodoro-duration" class="form-control" value="25">
+                </div>
+                <div class="mb-3">
+                    <label for="short-break-duration" class="form-label">Short Break Duration (minutes)</label>
+                    <input type="number" id="short-break-duration" class="form-control" value="5">
+                </div>
+                <div class="mb-3">
+                    <label for="long-break-duration" class="form-label">Long Break Duration (minutes)</label>
+                    <input type="number" id="long-break-duration" class="form-control" value="15">
+                </div>
+                <div class="text-center">
+                     <button id="save-settings-btn" class="btn btn-success">Save Settings</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background Customization -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6">
+                <h3 class="text-center mb-3">Customize Appearance</h3>
+                <div class="mb-3">
+                    <label for="bg-color-picker" class="form-label">Background Color</label>
+                    <input type="color" id="bg-color-picker" class="form-control form-control-color" value="#f4f4f4">
+                </div>
+                <div class="mb-3">
+                    <label for="bg-image-url" class="form-label">Background Image URL (optional)</label>
+                    <input type="text" id="bg-image-url" class="form-control" placeholder="Enter image URL">
+                </div>
+                 <div class="text-center">
+                    <button id="apply-appearance-btn" class="btn btn-info">Apply Appearance</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- History -->
+        <div class="mt-5">
+            <h3 class="text-center mb-3">History</h3>
+            <ul id="history-list" class="list-group">
+                <!-- History items will be populated here by script.js -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
