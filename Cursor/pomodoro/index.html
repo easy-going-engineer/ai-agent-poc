@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポモドーロタイマー</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="text-center mb-4">ポモドーロタイマー</h1>
+                        
+                        <div class="timer-display text-center mb-4">
+                            <h2 id="time">25:00</h2>
+                        </div>
+
+                        <div class="controls text-center mb-4">
+                            <button id="startBtn" class="btn btn-primary me-2">開始</button>
+                            <button id="pauseBtn" class="btn btn-warning me-2">一時停止</button>
+                            <button id="resetBtn" class="btn btn-danger">リセット</button>
+                        </div>
+
+                        <div class="settings mb-4">
+                            <h3>設定</h3>
+                            <div class="mb-3">
+                                <label for="workTime" class="form-label">作業時間（分）</label>
+                                <input type="number" class="form-control" id="workTime" value="25" min="1" max="60">
+                            </div>
+                            <div class="mb-3">
+                                <label for="breakTime" class="form-label">休憩時間（分）</label>
+                                <input type="number" class="form-control" id="breakTime" value="5" min="1" max="30">
+                            </div>
+                        </div>
+
+                        <div class="theme-settings mb-4">
+                            <h3>テーマ設定</h3>
+                            <div class="mb-3">
+                                <label for="backgroundColor" class="form-label">背景色</label>
+                                <input type="color" class="form-control form-control-color" id="backgroundColor" value="#ffffff">
+                            </div>
+                            <div class="mb-3">
+                                <label for="backgroundImage" class="form-label">背景画像URL</label>
+                                <input type="text" class="form-control" id="backgroundImage" placeholder="画像のURLを入力">
+                            </div>
+                        </div>
+
+                        <div class="history">
+                            <h3>履歴</h3>
+                            <div id="historyList" class="list-group">
+                                <!-- 履歴がここに追加されます -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
