@@ -1,0 +1,317 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: 300;
+}
+
+.timer-section {
+    position: relative;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.timer-display {
+    position: relative;
+    z-index: 2;
+}
+
+.time {
+    font-size: 4rem;
+    font-weight: 300;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: 'Courier New', monospace;
+}
+
+.session-info {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.progress-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.progress-svg {
+    transform: rotate(-90deg);
+}
+
+.progress-background {
+    fill: none;
+    stroke: #f0f0f0;
+    stroke-width: 8;
+}
+
+.progress-circle {
+    fill: none;
+    stroke: #667eea;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 879.64; /* 2 * π * 140 */
+    stroke-dashoffset: 879.64;
+    transition: stroke-dashoffset 1s linear;
+}
+
+.controls {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.control-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.control-btn.primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.control-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.control-btn.secondary {
+    background: #f8f9fa;
+    color: #666;
+    border: 2px solid #e9ecef;
+}
+
+.control-btn.secondary:hover {
+    background: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.settings {
+    padding: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.settings h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.setting-group {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.setting-group label {
+    font-weight: 500;
+    color: #555;
+    flex: 1;
+}
+
+.setting-group input[type="number"] {
+    width: 80px;
+    padding: 8px 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.setting-group input[type="number"]:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.checkbox-group {
+    align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    cursor: pointer;
+}
+
+.stats {
+    padding: 30px;
+}
+
+.stats h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 2px solid #e9ecef;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Timer states */
+.timer-work .progress-circle {
+    stroke: #e74c3c;
+}
+
+.timer-work .time {
+    color: #e74c3c;
+}
+
+.timer-short-break .progress-circle {
+    stroke: #2ecc71;
+}
+
+.timer-short-break .time {
+    color: #2ecc71;
+}
+
+.timer-long-break .progress-circle {
+    stroke: #f39c12;
+}
+
+.timer-long-break .time {
+    color: #f39c12;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .container {
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        padding: 20px;
+    }
+    
+    .time {
+        font-size: 3rem;
+    }
+    
+    .progress-svg {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .progress-background,
+    .progress-circle {
+        r: 115;
+        cx: 125;
+        cy: 125;
+        stroke-dasharray: 722.57;
+        stroke-dashoffset: 722.57;
+    }
+    
+    .session-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .control-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .setting-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .setting-group input[type="number"] {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animation for completed sessions */
+@keyframes celebration {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.celebrating {
+    animation: celebration 0.5s ease-in-out;
+}
