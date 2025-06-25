@@ -25,3 +25,6 @@ AIエージェントを試しに使ってできたものの保管用
 
 
 ### [Jules](https://easy-going-engineer.github.io/ai-agent-poc/Jules/)
+
+
+### [Gemini](https://easy-going-engineer.github.io/ai-agent-poc/Gemini/)
